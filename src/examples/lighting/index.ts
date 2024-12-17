@@ -156,6 +156,10 @@ class Protein3dViewer {
 
     //this.setPreset("illustrative");
     await this.loadByQueryParameter();
+    const onLoadHandler = (window as any)["viewerOnloadHandler"];
+    if(typeof onLoadHandler === "function") {
+      onLoadHandler(viewerApi, this);
+    }
   }
 
   setPreset(preset: Canvas3DPreset) {
